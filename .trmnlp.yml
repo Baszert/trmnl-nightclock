@@ -1,0 +1,22 @@
+# TRMNLP configuration
+---
+watch:
+  - .trmnlp.yml
+  - src
+
+custom_fields:
+  lat_lon: "52.0907,5.1214"
+  place_name: Utrecht
+  moment: auto
+  lines: 'on'
+  names: 'on'
+  language: auto
+  clock: auto
+
+variables:
+  trmnl:
+    user:
+      locale: nl
+      utc_offset: 7200
+    plugin_settings:
+      instance_name: Nightclock

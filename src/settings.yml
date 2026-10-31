@@ -1,0 +1,91 @@
+---
+strategy: polling
+no_screen_padding: 'yes'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+framework_version: 3.4.4
+serverless_language: ''
+refresh_interval_floor: ''
+polling_url: 'https://api.open-meteo.com/v1/forecast?latitude={{ lat_lon | split: "," | first | strip }}&longitude={{ lat_lon | split: "," | last | strip }}&hourly=cloud_cover&timezone=auto&past_days=1&forecast_days=3&timeformat=unixtime'
+polling_headers: ''
+polling_body: ''
+id: 503919
+oauth_enabled: 'false'
+oauth_pkce_enabled: 'no'
+custom_fields:
+- keyname: about
+  field_type: author_bio
+  name: About This Plugin
+  category: environment,discovery
+  github_url: https://github.com/Baszert/trmnl-nightclock
+  description: 'Tonight''s sky as a window on your wall: the real stars, the Milky Way and the planets with their paths through the night. Plus when it gets dark, the moon, meteor showers and clouds. Anywhere on Earth, in 12 languages.'
+  email_address: trmnl@achtnegen.nl
+  learn_more_url: https://open-meteo.com
+- keyname: lat_lon
+  field_type: lat_lon
+  name: Location
+  description: Search for a city or postal code, or type latitude,longitude.
+  default: 52.0907,5.1214
+- keyname: place_name
+  field_type: string
+  name: Place name
+  description: Shown at the top. Leave empty to hide.
+  placeholder: Utrecht
+  optional: true
+- keyname: moment
+  field_type: select
+  name: Sky at
+  description: Auto shows the sky as it is right now once it is dark, and the sky at 23:00 during the day. Or pick a fixed time.
+  options:
+  - Auto: auto
+  - '21:00': '21'
+  - '22:00': '22'
+  - '23:00': '23'
+  - '00:00': '0'
+  default: auto
+- keyname: lines
+  field_type: boolean
+  name: Constellation lines
+  default: true
+- keyname: names
+  field_type: boolean
+  name: Star names
+  default: true
+- keyname: language
+  field_type: select
+  name: Language
+  description: Auto follows your TRMNL account language.
+  options:
+  - Auto: auto
+  - English: en
+  - Nederlands: nl
+  - Deutsch: de
+  - Français: fr
+  - Español: es
+  - Italiano: it
+  - Português: pt
+  - Svenska: sv
+  - Dansk: da
+  - Norsk: nb
+  - Polski: pl
+  - Suomi: fi
+  default: auto
+- keyname: clock
+  field_type: select
+  name: Clock
+  description: Auto uses 12-hour times for US English, 24-hour otherwise.
+  options:
+  - Auto: auto
+  - 24-hour: '24'
+  - 12-hour: '12'
+  default: auto
+- keyname: test_date
+  field_type: string
+  name: Test date
+  description: Optional. Pretend it is this date (YYYY-MM-DD, or YYYY-MM-DDTHH:MM for a time) to see another night. Leave empty for normal use.
+  placeholder: 2026-12-14T23:00
+  optional: true
+name: Nightclock
+description: The sky, tonight.
+refresh_interval: 60
